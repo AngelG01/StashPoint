@@ -1,0 +1,15 @@
+# Virtual environment
+venv/
+
+# Secrets
+.env
+
+# Python cruft
+__pycache__/
+*.pyc
+
+# Uploaded user files — these are personal photos/videos, not code
+media/
+
+# Django
+*.sqlite3
