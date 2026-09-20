@@ -1,5 +1,7 @@
 from django.db import models
 from django.utils import timezone
+from django.conf import settings
+
 # Create your models here.
 def upload_to_path(instance, filename):
     now = timezone.now()
@@ -7,6 +9,11 @@ def upload_to_path(instance, filename):
 
 
 class UploadedFile(models.Model):
+    owner = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name='uploaded_files',
+    )
     file = models.FileField(upload_to=upload_to_path)
     original_file_name = models.CharField(max_length=255)
     uploaded_at = models.DateTimeField(auto_now_add=True)
