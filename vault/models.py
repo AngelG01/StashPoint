@@ -1,3 +1,5 @@
+import mimetypes
+
 from django.db import models
 from django.utils import timezone
 from django.conf import settings
@@ -21,3 +23,8 @@ class UploadedFile(models.Model):
 
     def __str__(self):
         return self.original_file_name
+
+    @property
+    def is_image(self):
+        content_type, _ = mimetypes.guess_type(self.original_file_name or self.file.name)
+        return content_type is not None and content_type.startswith('image/')

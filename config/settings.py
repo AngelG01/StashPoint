@@ -144,6 +144,6 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 AUTH_USER_MODEL = 'accounts.User'
 
-LOGIN_URL = 'accounts:login'
+LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'vault:gallery'
-LOGOUT_REDIRECT_URL = 'accounts:login'
+LOGOUT_REDIRECT_URL = 'login'

@@ -12,7 +12,7 @@ def upload_file(request):
             uploaded_file = form.save(commit=False)
             uploaded_file.owner = request.user
             uploaded_file.save()
-            redirect('vault:gallery')
+            return redirect('vault:gallery')
     else:
         form = UploadedFileForm()
 
@@ -22,3 +22,16 @@ def upload_file(request):
 def gallery(request):
     files = UploadedFile.objects.filter(owner=request.user).order_by('-uploaded_at')
     return render(request, 'vault/gallery.html', {'files':files})
+
+@login_required
+def delete_file(request, file_id):
+    if request.method == 'POST':
+        uploaded_file = UploadedFile.objects.filter(
+            id=file_id,
+            owner=request.user,
+        ).first()
+        if uploaded_file is not None:
+            uploaded_file.file.delete(save=False)
+            uploaded_file.delete()
+
+    return redirect('vault:gallery')

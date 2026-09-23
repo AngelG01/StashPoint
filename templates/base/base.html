@@ -9,7 +9,7 @@
 </head>
 <body>
     <nav class="topnav">
-        <a class="brand" href="{% url 'vault:gallery' %}">
+        <a class="brand" href="{% if user.is_authenticated %}{% url 'vault:gallery' %}{% else %}{% url 'login' %}{% endif %}">
             <span class="brand-mark">SP</span>
             StashPoint
         </a>
@@ -30,11 +30,11 @@
                     <button type="submit" class="btn-link">Log out</button>
                 </form>
             {% else %}
-                <a href="{% url 'accounts:login' %}" class="btn-link">Log in</a>
+                <a href="{% url 'accounts:sign_up' %}" class="btn-link">Sign up</a>
             {% endif %}
         </div>
     </nav>
-    <main>
+    <main class="{% block main_class %}{% endblock %}">
         {% block content %}{% endblock %}
     </main>
 </body>

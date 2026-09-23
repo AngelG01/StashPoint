@@ -1,0 +1,80 @@
+.user-chip {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.88rem;
+    color: var(--color-muted);
+    font-weight: 600;
+}
+
+.avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--gradient-brand);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.btn-link {
+    background: none;
+    border: none;
+    color: var(--color-primary);
+    font-size: 0.88rem;
+    font-weight: 700;
+    cursor: pointer;
+    padding: 0;
+}
+
+.btn-link:hover { color: var(--color-primary-dark); }
+
+/* ---------- Buttons ---------- */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: var(--gradient-brand);
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.88rem;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+}
+
+.btn:hover {
+    filter: brightness(1.06);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-outline {
+    background: var(--color-surface);
+    color: var(--color-primary-dark);
+    border: 1.5px solid var(--color-primary-light);
+    box-shadow: none;
+}
+
+.btn-outline:hover { background: var(--color-primary-light); }
+
+.btn-full {
+    width: 100%;
+    justify-content: center;
+}
+
+/* ---------- Cards ---------- */
+
+.card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    padding: 1.75rem;
+}

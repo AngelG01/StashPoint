@@ -1,13 +1,17 @@
 {% extends "base/base.html" %}
 
 {% block title %}Log In{% endblock %}
+{% block main_class %}auth-main{% endblock %}
 
 {% block content %}
-<h1>Log In</h1>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Log In</button>
-</form>
-<p>Don't have an account? <a href="{% url 'accounts:sign_up' %}">Sign up</a></p>
+<div class="auth-card">
+    <h1>Welcome back</h1>
+    <p class="subtitle">Log in to access your files</p>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-full">Log In</button>
+    </form>
+    <p class="form-footer">Don't have an account? <a href="{% url 'accounts:sign_up' %}">Sign up</a></p>
+</div>
 {% endblock %}
