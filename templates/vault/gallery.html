@@ -1,0 +1,10 @@
+<h1>My Files</h1>
+<a href="{% url 'vault:upload' %}">Upload new file</a>
+<ul>
+{% for file in files %}
+    <li>
+        {{ file.original_filename }} — {{ file.uploaded_at }}
+        <a href="{{ file.file.url }}" target="_blank">View</a>
+    </li>
+{% endfor %}
+</ul>
