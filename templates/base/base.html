@@ -3,21 +3,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %}StashPoint{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    <nav>
-        <a href="{% url 'vault:gallery' %}">StashPoint</a>
+    <nav class="topnav">
+        <a class="brand" href="{% url 'vault:gallery' %}">
+            <span class="brand-mark">SP</span>
+            StashPoint
+        </a>
+        {% if user.is_authenticated %}
+        <div class="nav-links">
+            <a href="{% url 'vault:gallery' %}">Gallery</a>
+            <a href="{% url 'vault:upload' %}">Upload</a>
+        </div>
+        {% endif %}
         <div class="nav-right">
             {% if user.is_authenticated %}
-                <span>{{ user.username }}</span>
-                <form method="post" action="{% url 'accounts:logout' %}" style="display:inline">
+                <div class="user-chip">
+                    <span class="avatar">{{ user.username|first|upper }}</span>
+                    {{ user.username }}
+                </div>
+                <form method="post" action="{% url 'accounts:logout' %}">
                     {% csrf_token %}
-                    <button type="submit">Log out</button>
+                    <button type="submit" class="btn-link">Log out</button>
                 </form>
             {% else %}
-                <a href="{% url 'accounts:login' %}">Log in</a>
+                <a href="{% url 'accounts:login' %}" class="btn-link">Log in</a>
             {% endif %}
         </div>
     </nav>

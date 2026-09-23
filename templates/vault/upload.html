@@ -3,11 +3,14 @@
 {% block title %}Upload{% endblock %}
 
 {% block content %}
-<h1>Upload a file</h1>
-<form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Upload</button>
-</form>
-<a href="{% url 'vault:gallery' %}">View my files</a>
+<div class="page-header">
+    <h1>Upload a File</h1>
+</div>
+<div class="card">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn">Upload</button>
+    </form>
+</div>
 {% endblock %}

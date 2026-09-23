@@ -1,12 +1,19 @@
 :root {
-    --color-bg: #f7f5f2;
+    --color-bg: #f4f5f7;
     --color-surface: #ffffff;
-    --color-text: #2b2b2b;
-    --color-muted: #767267;
-    --color-accent: #7a6a53;
-    --color-accent-hover: #5f5240;
-    --color-border: #e3ddd3;
-    --radius: 10px;
+    --color-text: #1a1d23;
+    --color-muted: #6b7280;
+    --color-border: #e5e7eb;
+    --color-primary: #4f46e5;
+    --color-primary-hover: #4338ca;
+    --color-primary-soft: #eef2ff;
+    --color-danger: #dc2626;
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 14px;
+    --shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.06);
+    --shadow-md: 0 4px 12px rgba(16, 24, 40, 0.08);
+    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, sans-serif;
 }
 
 * {
@@ -15,115 +22,277 @@
 
 body {
     margin: 0;
-    font-family: -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-family: var(--font-sans);
     background: var(--color-bg);
     color: var(--color-text);
-    line-height: 1.5;
+    line-height: 1.55;
+    font-size: 15px;
 }
 
-nav {
+/* ---------- Top navigation ---------- */
+
+.topnav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1rem 2rem;
+    padding: 0 1.5rem;
+    height: 60px;
     background: var(--color-surface);
     border-bottom: 1px solid var(--color-border);
+    position: sticky;
+    top: 0;
+    z-index: 10;
 }
 
-nav a {
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 700;
+    font-size: 1.05rem;
     color: var(--color-text);
     text-decoration: none;
-    font-weight: 600;
 }
 
-nav .nav-right {
+.brand-mark {
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    background: var(--color-primary);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    margin-left: 2rem;
+}
+
+.nav-links a {
+    color: var(--color-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 0.45rem 0.8rem;
+    border-radius: var(--radius-sm);
+}
+
+.nav-links a:hover {
+    background: var(--color-bg);
+    color: var(--color-text);
+}
+
+.nav-links a.active {
+    color: var(--color-primary);
+    background: var(--color-primary-soft);
+}
+
+.nav-right {
+    margin-left: auto;
     display: flex;
     align-items: center;
     gap: 1rem;
-    font-size: 0.9rem;
+}
+
+.user-chip {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.88rem;
     color: var(--color-muted);
 }
 
+.avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--color-primary-soft);
+    color: var(--color-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.btn-link {
+    background: none;
+    border: none;
+    color: var(--color-muted);
+    font-size: 0.88rem;
+    cursor: pointer;
+    padding: 0;
+}
+
+.btn-link:hover {
+    color: var(--color-danger);
+}
+
+/* ---------- Layout ---------- */
+
 main {
-    max-width: 720px;
+    max-width: 900px;
     margin: 2.5rem auto;
     padding: 0 1.5rem;
 }
 
-h1 {
-    font-size: 1.6rem;
-    margin-bottom: 1.25rem;
+.page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
 }
 
-form {
+.page-header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+/* ---------- Buttons ---------- */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: var(--color-primary);
+    color: white;
+    border: none;
+    padding: 0.55rem 1.1rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.88rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: var(--color-primary-hover);
+}
+
+/* ---------- Cards / forms ---------- */
+
+.card {
     background: var(--color-surface);
     border: 1px solid var(--color-border);
-    border-radius: var(--radius);
-    padding: 1.5rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    padding: 1.75rem;
 }
 
 form p {
-    margin: 0 0 1rem;
+    margin: 0 0 1.1rem;
 }
 
 label {
     display: block;
-    font-size: 0.85rem;
+    font-size: 0.82rem;
+    font-weight: 600;
     color: var(--color-muted);
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.35rem;
 }
 
 input {
     width: 100%;
-    padding: 0.6rem 0.7rem;
+    padding: 0.6rem 0.75rem;
     border: 1px solid var(--color-border);
-    border-radius: 6px;
-    font-size: 0.95rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.9rem;
+    font-family: var(--font-sans);
 }
 
 input:focus {
     outline: none;
-    border-color: var(--color-accent);
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px var(--color-primary-soft);
 }
 
-button {
-    background: var(--color-accent);
-    color: white;
-    border: none;
-    padding: 0.6rem 1.3rem;
-    border-radius: 6px;
-    font-size: 0.95rem;
-    cursor: pointer;
+.helptext {
+    font-size: 0.78rem;
+    color: var(--color-muted);
+    margin-top: 0.3rem;
 }
 
-button:hover {
-    background: var(--color-accent-hover);
-}
-
-.file-list {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-}
-
-.file-list li {
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius);
-    padding: 0.9rem 1.1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.file-meta {
-    font-size: 0.85rem;
+.form-footer {
+    margin-top: 1.25rem;
+    font-size: 0.88rem;
     color: var(--color-muted);
 }
 
-.upload-link {
-    display: inline-block;
-    margin-bottom: 1.25rem;
+.form-footer a {
+    color: var(--color-primary);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+/* ---------- File grid ---------- */
+
+.file-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.file-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 1rem;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.15s ease;
+}
+
+.file-card:hover {
+    box-shadow: var(--shadow-md);
+}
+
+.file-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-sm);
+    background: var(--color-primary-soft);
+    color: var(--color-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+}
+
+.file-name {
+    font-weight: 600;
+    font-size: 0.9rem;
+    word-break: break-word;
+    margin-bottom: 0.2rem;
+}
+
+.file-date {
+    font-size: 0.78rem;
+    color: var(--color-muted);
+    margin-bottom: 0.75rem;
+}
+
+.file-actions a {
+    font-size: 0.82rem;
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* ---------- Empty state ---------- */
+
+.empty-state {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: var(--color-muted);
 }
